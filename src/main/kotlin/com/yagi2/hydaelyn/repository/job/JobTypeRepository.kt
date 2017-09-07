@@ -1,6 +1,6 @@
-package com.yagi2.hydaelyn.repository
+package com.yagi2.hydaelyn.repository.job
 
-import com.yagi2.hydaelyn.model.entity.JobType
+import com.yagi2.hydaelyn.model.entity.job.JobType
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface JobTypeRepository : JpaRepository<JobType, Int> {

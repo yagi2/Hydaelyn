@@ -1,7 +1,7 @@
-package com.yagi2.hydaelyn.service
+package com.yagi2.hydaelyn.service.job
 
-import com.yagi2.hydaelyn.model.entity.JobType
-import com.yagi2.hydaelyn.repository.JobTypeRepository
+import com.yagi2.hydaelyn.model.entity.job.JobType
+import com.yagi2.hydaelyn.repository.job.JobTypeRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service

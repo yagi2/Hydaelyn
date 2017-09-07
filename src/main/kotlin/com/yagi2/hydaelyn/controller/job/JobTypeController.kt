@@ -1,7 +1,7 @@
 package com.yagi2.hydaelyn.controller.job
 
-import com.yagi2.hydaelyn.model.entity.JobType
-import com.yagi2.hydaelyn.service.JobTypeService
+import com.yagi2.hydaelyn.model.entity.job.JobType
+import com.yagi2.hydaelyn.service.job.JobTypeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod

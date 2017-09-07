@@ -1,4 +1,4 @@
-package com.yagi2.hydaelyn.model.entity
+package com.yagi2.hydaelyn.model.entity.job
 
 import javax.persistence.*
 

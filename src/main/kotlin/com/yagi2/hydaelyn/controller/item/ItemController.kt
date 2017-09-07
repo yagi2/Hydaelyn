@@ -1,7 +1,7 @@
-package com.yagi2.hydaelyn.controller
+package com.yagi2.hydaelyn.controller.item
 
-import com.yagi2.hydaelyn.model.entity.Item
-import com.yagi2.hydaelyn.service.ItemService
+import com.yagi2.hydaelyn.model.entity.item.Item
+import com.yagi2.hydaelyn.service.item.ItemService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod

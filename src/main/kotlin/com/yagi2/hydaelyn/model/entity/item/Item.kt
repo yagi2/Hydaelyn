@@ -1,10 +1,10 @@
-package com.yagi2.hydaelyn.model.entity
+package com.yagi2.hydaelyn.model.entity.item
 
 import javax.persistence.*
 
 @Entity
-@Table(name = "job_type")
-data class JobType(
+@Table(name = "item")
+data class Item(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Int,
