@@ -1,5 +1,17 @@
 \c hydaelyn yagi2
 
+DROP TABLE IF EXISTS job;
+
+CREATE TABLE job
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64),
+    type INT
+);
+
+ALTER TABLE job
+    OWNER TO yagi2;
+
 -- type is jobtype id
 INSERT INTO job(id, name, type)
     VALUES
