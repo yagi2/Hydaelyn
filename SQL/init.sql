@@ -1,0 +1,21 @@
+DROP DATABASE IF EXISTS hydaelyn;
+
+DROP USER IF EXISTS yagi2;
+CREATE USER yagi2 WITH PASSWORD 'yagi2' CREATEDB;
+
+CREATE DATABASE hydaelyn
+    WITH OWNER = yagi2
+    ENCODING = 'UTF8';
+
+\c hydaelyn yagi2
+
+DROP TABLE IF EXISTS item;
+
+CREATE TABLE item
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64)
+);
+
+ALTER TABLE item
+    OWNER TO yagi2;
