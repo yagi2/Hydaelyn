@@ -19,3 +19,14 @@ CREATE TABLE item
 
 ALTER TABLE item
     OWNER TO yagi2;
+
+DROP TABLE IF EXISTS job_type;
+
+CREATE TABLE job_type
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64)
+);
+
+ALTER TABLE job_type
+    OWNER TO yagi2;
