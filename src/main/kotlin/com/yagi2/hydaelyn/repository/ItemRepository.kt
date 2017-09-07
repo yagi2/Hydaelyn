@@ -1,6 +1,6 @@
 package com.yagi2.hydaelyn.repository
 
-import com.yagi2.hydaelyn.model.Item
+import com.yagi2.hydaelyn.model.entity.Item
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface ItemRepository : JpaRepository<Item, Int> {

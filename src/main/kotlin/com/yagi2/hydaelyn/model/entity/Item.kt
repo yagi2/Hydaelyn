@@ -1,4 +1,4 @@
-package com.yagi2.hydaelyn.model
+package com.yagi2.hydaelyn.model.entity
 
 import javax.persistence.*
 
@@ -10,5 +10,5 @@ data class Item(
         val id: Int,
 
         @Column(name = "name")
-        val name:String
+        val name: String
 )

@@ -1,6 +1,6 @@
 package com.yagi2.hydaelyn.service
 
-import com.yagi2.hydaelyn.model.Item
+import com.yagi2.hydaelyn.model.entity.Item
 import com.yagi2.hydaelyn.repository.ItemRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Sort
