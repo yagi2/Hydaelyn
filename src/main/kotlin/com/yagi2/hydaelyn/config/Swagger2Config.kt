@@ -24,7 +24,9 @@ class Swagger2Config {
 
     val paths: Predicate<String> =
             Predicates.or(
-                    Predicates.containsPattern("/item/*")
+                    Predicates.containsPattern("/item/*"),
+                    Predicates.containsPattern("/job"),
+                    Predicates.containsPattern("/jobtype")
             )
 
     val apiInfo: ApiInfo =
