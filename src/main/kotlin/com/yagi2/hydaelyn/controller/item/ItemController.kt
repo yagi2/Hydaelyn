@@ -1,6 +1,7 @@
 package com.yagi2.hydaelyn.controller.item
 
-import com.yagi2.hydaelyn.model.entity.item.Item
+import com.yagi2.hydaelyn.model.entity.item.ItemEntity
+import com.yagi2.hydaelyn.model.usecase.Item
 import com.yagi2.hydaelyn.service.item.ItemService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,12 +17,12 @@ class ItemController {
     lateinit var service: ItemService
 
     @RequestMapping(value = "/all", method = arrayOf(RequestMethod.GET))
-    fun selectAll(): List<Item> = service.selectAll()
+    fun selectAll(): List<Item> = service.selectAll().map { Item.entityToUsecase(it) }
 
     @RequestMapping(value = "/search", method = arrayOf(RequestMethod.GET))
     fun search(@RequestParam(value = "name", required = false) name: String?): List<Item> {
 
-        val redundantList = mutableListOf<MutableList<Item>>()
+        val redundantList = mutableListOf<MutableList<ItemEntity>>()
 
         name?.let {
             if (name.isNotBlank()) {
@@ -30,7 +31,7 @@ class ItemController {
             }
         }
 
-        val result = mutableListOf<Item>()
+        val result = mutableListOf<ItemEntity>()
 
         redundantList.forEach {
             it.forEach { item ->
@@ -40,6 +41,9 @@ class ItemController {
             }
         }
 
-        return result
+        return result.map { Item.entityToUsecase(it) }
     }
+
+    @RequestMapping(value = "/land", method = arrayOf(RequestMethod.GET))
+    fun landItems(): List<Item> = service.findByCanTakeItems().map { Item.entityToUsecase(it) }
 }

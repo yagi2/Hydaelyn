@@ -1,6 +1,6 @@
 package com.yagi2.hydaelyn.service.item
 
-import com.yagi2.hydaelyn.model.entity.item.ItemCategory
+import com.yagi2.hydaelyn.model.entity.item.ItemCategoryEntity
 import com.yagi2.hydaelyn.repository.item.ItemCategoryRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Sort
@@ -14,10 +14,10 @@ class ItemCategoryService {
     @Autowired
     lateinit var repository: ItemCategoryRepository
 
-    fun selectAll(): List<ItemCategory> = repository.findAll(Sort(Sort.Direction.ASC, "id"))
+    fun selectAll(): List<ItemCategoryEntity> = repository.findAll(Sort(Sort.Direction.ASC, "id"))
 
-    fun findById(id: Int): List<ItemCategory> = repository.findById(id)
+    fun findById(id: Int): List<ItemCategoryEntity> = repository.findById(id)
 
-    fun findByName(name: String): List<ItemCategory> = repository.findByName(name)
-    fun findByNameContains(name: String): List<ItemCategory> = repository.findByNameContainsOrderByIdAsc(name)
+    fun findByName(name: String): List<ItemCategoryEntity> = repository.findByName(name)
+    fun findByNameContains(name: String): List<ItemCategoryEntity> = repository.findByNameContainsOrderByIdAsc(name)
 }
