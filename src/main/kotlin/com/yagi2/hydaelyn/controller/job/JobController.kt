@@ -1,6 +1,6 @@
 package com.yagi2.hydaelyn.controller.job
 
-import com.yagi2.hydaelyn.model.entity.job.Job
+import com.yagi2.hydaelyn.model.entity.job.JobEntity
 import com.yagi2.hydaelyn.service.job.JobService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,14 +16,14 @@ class JobController {
     lateinit var service: JobService
 
     @RequestMapping(value = "/", method = arrayOf(RequestMethod.GET))
-    fun selectAll(): List<Job> = service.selectAll()
+    fun selectAll(): List<JobEntity> = service.selectAll()
 
     @RequestMapping(value = "/search", method = arrayOf(RequestMethod.GET))
     fun search(@RequestParam(name = "name", required = false) name: String?,
                @RequestParam(name = "type", required = false) jobTypeId: Int?,
-               @RequestParam(name = "id", required = false) id: Int?): List<Job> {
+               @RequestParam(name = "id", required = false) id: Int?): List<JobEntity> {
 
-        val redundantList = mutableListOf<MutableList<Job>>()
+        val redundantList = mutableListOf<MutableList<JobEntity>>()
 
         name?.let {
             if (name.isNotBlank()) {
@@ -42,7 +42,7 @@ class JobController {
             redundantList[redundantList.size - 1].addAll(service.findById(id))
         }
 
-        val result = mutableListOf<Job>()
+        val result = mutableListOf<JobEntity>()
 
         redundantList.forEach {
             it.forEach { job ->

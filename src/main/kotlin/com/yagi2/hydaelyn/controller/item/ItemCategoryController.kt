@@ -1,6 +1,6 @@
 package com.yagi2.hydaelyn.controller.item
 
-import com.yagi2.hydaelyn.model.entity.item.ItemCategory
+import com.yagi2.hydaelyn.model.entity.item.ItemCategoryEntity
 import com.yagi2.hydaelyn.service.item.ItemCategoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,13 +16,13 @@ class ItemCategoryController {
     lateinit var service: ItemCategoryService
 
     @RequestMapping(value = "/all", method = arrayOf(RequestMethod.GET))
-    fun selectAll(): List<ItemCategory> = service.selectAll()
+    fun selectAll(): List<ItemCategoryEntity> = service.selectAll()
 
     @RequestMapping(value = "/search", method = arrayOf(RequestMethod.GET))
     fun search(@RequestParam(value = "name", required = false) name: String?,
-               @RequestParam(value = "id", required = false) id: Int?): List<ItemCategory> {
+               @RequestParam(value = "id", required = false) id: Int?): List<ItemCategoryEntity> {
 
-        val redundantList = mutableListOf<MutableList<ItemCategory>>()
+        val redundantList = mutableListOf<MutableList<ItemCategoryEntity>>()
 
         name?.let {
             if (name.isNotBlank()) {
@@ -36,7 +36,7 @@ class ItemCategoryController {
             redundantList[redundantList.size - 1].addAll(service.findById(id))
         }
 
-        val result = mutableListOf<ItemCategory>()
+        val result = mutableListOf<ItemCategoryEntity>()
 
         redundantList.forEach {
             it.forEach { itemCategory ->

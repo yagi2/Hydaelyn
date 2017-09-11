@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "job_type")
-data class JobType(
+data class JobTypeEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Int,
