@@ -2,6 +2,7 @@ package com.yagi2.hydaelyn.controller.item
 
 import com.yagi2.hydaelyn.model.entity.item.ItemEntity
 import com.yagi2.hydaelyn.model.usecase.Item
+import com.yagi2.hydaelyn.optimize
 import com.yagi2.hydaelyn.service.item.ItemService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -31,17 +32,7 @@ class ItemController {
             }
         }
 
-        val result = mutableListOf<ItemEntity>()
-
-        redundantList.forEach {
-            it.forEach { item ->
-                if (redundantList.all { it.contains(item) } && result.contains(item).not()) {
-                    result.add(item)
-                }
-            }
-        }
-
-        return result.map { Item.entityToUsecase(it) }
+        return redundantList.optimize().map { Item.entityToUsecase(it) }
     }
 
     @RequestMapping(value = "/land", method = arrayOf(RequestMethod.GET))

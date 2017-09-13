@@ -1,6 +1,7 @@
 package com.yagi2.hydaelyn.controller.job
 
 import com.yagi2.hydaelyn.model.entity.job.JobTypeEntity
+import com.yagi2.hydaelyn.optimize
 import com.yagi2.hydaelyn.service.job.JobTypeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -36,16 +37,6 @@ class JobTypeController {
             redundantList[redundantList.size - 1].addAll(service.findById(id))
         }
 
-        val result = mutableListOf<JobTypeEntity>()
-
-        redundantList.forEach {
-            it.forEach { jobType ->
-                if (redundantList.all { it.contains(jobType) } && result.contains(jobType).not()) {
-                    result.add(jobType)
-                }
-            }
-        }
-
-        return result
+        return redundantList.optimize()
     }
 }
