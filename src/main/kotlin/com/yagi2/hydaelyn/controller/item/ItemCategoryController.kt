@@ -1,6 +1,7 @@
 package com.yagi2.hydaelyn.controller.item
 
 import com.yagi2.hydaelyn.model.entity.item.ItemCategoryEntity
+import com.yagi2.hydaelyn.optimize
 import com.yagi2.hydaelyn.service.item.ItemCategoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -36,16 +37,6 @@ class ItemCategoryController {
             redundantList[redundantList.size - 1].addAll(service.findById(id))
         }
 
-        val result = mutableListOf<ItemCategoryEntity>()
-
-        redundantList.forEach {
-            it.forEach { itemCategory ->
-                if (redundantList.all { it.contains(itemCategory) } && result.contains(itemCategory).not()) {
-                    result.add(itemCategory)
-                }
-            }
-        }
-
-        return result
+        return redundantList.optimize()
     }
 }
